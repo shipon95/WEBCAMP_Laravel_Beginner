@@ -4,15 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 
-class AuthController extends Controller
+class TaskController extends Controller
 {
     /**
-     * トップページ を表示する
+     * タスク一覧ページ を表示する
      *
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function list()
     {
-        return view('index');
+        return view('task.list');
     }
 }
