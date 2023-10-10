@@ -16,10 +16,26 @@ class TaskController extends Controller
      */
     public function list()
     {
-        return view('task.list');
+        // 一覧の取得
+        $list = TaskModel::where('user_id', Auth::id())
+                         ->orderBy('priority', 'DESC')
+                         ->orderBy('period')
+                         ->orderBy('created_at')
+                         ->get();
+/*
+$sql = TaskModel::where('user_id', Auth::id())
+                 ->orderBy('priority', 'DESC')
+                 ->orderBy('period')
+                 ->orderBy('created_at')
+                 ->toSql();
+//echo "<pre>\n"; var_dump($sql, $list); exit;
+var_dump($sql);
+*/
+        //
+        return view('task.list', ['list' => $list]);
     }
 
-        /**
+    /**
      * タスクの新規登録
      */
     public function register(TaskRegisterPostRequest $request)
@@ -49,5 +65,4 @@ class TaskController extends Controller
         //
         return redirect('/task/list');
     }
-
-    }
+}
