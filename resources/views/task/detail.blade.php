@@ -15,6 +15,12 @@
         重要度： {{ $task->getPriorityString() }}<br>
         タスク詳細： <pre>{{ $task->detail }}</pre><br>
         <hr>
+        <form action="{{ route('delete', ['task_id' => $task->id]) }}" method="post">
+            @csrf
+            @method("DELETE")
+            <button onclick='return confirm("このタスクを削除します(削除したら戻せません)。よろしいですか？");'>タスクを削除する</button>
+        </form>
+        <hr>
         <menu label="リンク">
         <a href="/task/list">タスク一覧</a><br>
         <a href="/logout">ログアウト</a><br>
