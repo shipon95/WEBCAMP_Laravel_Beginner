@@ -75,7 +75,11 @@ var_dump($sql);
             // XXX 本当はログに書く等の処理をする。今回は一端「出力する」だけ
             echo $e->getMessage();
             exit;
-        }   // 一覧に遷移する
+             // タスク登録成功
+
+        }
+         $request->session()->flash('front.task_register_success', true);
+        // 一覧に遷移する
         return redirect('/task/list');
     } /**
      * CSV ダウンロード

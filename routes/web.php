@@ -43,7 +43,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout']);
 });
 
-
+//会員登録
+Route::post('/user/register', [UserController::class, 'index']);
 
 
 // テスト用
