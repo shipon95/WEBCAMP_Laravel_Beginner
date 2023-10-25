@@ -38,6 +38,7 @@
 
         <h1>タスクの一覧</h1>
           <a href="/task/csv/download">CSVダウンロード</a><br>
+          <a href="/completed_tasks/list">完了タスク一覧</a><br>
         <table border="1">
         <tr>
             <th>タスク名
@@ -50,7 +51,7 @@
             <td>{{ $task->getPriorityString() }}
             <td><a href="{{ route('detail', ['task_id' => $task->id]) }}">詳細閲覧</a>
             <td><a href="{{ route('edit', ['task_id' => $task->id]) }}">編集</a>
-            <td><form action="{{ route('completed_tasks/list', ['task_id' => $task->id]) }}" method="post"> @csrf <button onclick='return confirm("このタスクを「完了」にします。よろしいですか？");' >完了</button></form>
+            <td><form action="/completed_tasks/list" method="post"> @csrf <button onclick='return confirm("このタスクを「完了」にします。よろしいですか？");' >完了</button></form>
 @endforeach
         </table>
         <!-- ページネーション -->
