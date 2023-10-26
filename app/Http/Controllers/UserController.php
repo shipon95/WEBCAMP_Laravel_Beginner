@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
+
 namespace App\Http\Controllers;
+
 use App\Models\User as UserModel;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRegisterPost;
@@ -20,6 +22,7 @@ class UserController extends Controller
     {
        // validate済みのデータの取得
         $datum = $request->validated();
+          $datum['password'] = Hash::make($datum['password']);
         //
         //$user = Auth::user();
         //$id = Auth::id();
@@ -36,7 +39,7 @@ class UserController extends Controller
 
         }
 
-         $request->session()->flash('front.task_register_success', true);
+ $request->session()->flash('front._register_success', true);
         // 一覧に遷移する
         return redirect('/');
     }

@@ -3,6 +3,10 @@
 {{-- メインコンテンツ --}}
 @section('contets')
         <h1>ログイン</h1>
+ @if (session('front.task_register_success') == true)
+                タスクを登録しました！！<br>
+            @endif
+
         @if ($errors->any())
             <div>
             @foreach ($errors->all() as $error)
