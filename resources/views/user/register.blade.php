@@ -2,7 +2,7 @@
 
 {{-- メインコンテンツ --}}
 @section('contets')
-        <h1>`ユーザ登録</h1>
+        <h1>ユーザ登録</h1>
 
         @if ($errors->any())
             <div>
