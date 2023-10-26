@@ -25,7 +25,7 @@ use App\Http\Controllers\Admin\UserController as AdminUserController;
 // タスク管理システム
 Route::get('/', [AuthController::class, 'index'])->name('front.index');
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/completed_tasks/list', [CompletedTaskController::class, 'list']);
+
 
 //会員登録
 Route::get('/user/register', [UserController::class, 'index']);
@@ -33,7 +33,6 @@ Route::post('/user/register/1', [UserController::class, 'register']);
 
 // 認可処理
 Route::middleware(['auth'])->group(function () {
-
     Route::prefix('/task')->group(function () {
         Route::get('/list', [TaskController::class, 'list']);
         Route::post('/register', [TaskController::class, 'register']);
@@ -41,14 +40,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/edit/{task_id}', [TaskController::class, 'edit'])->whereNumber('task_id')->name('edit');
         Route::put('/edit/{task_id}', [TaskController::class, 'editSave'])->whereNumber('task_id')->name('edit_save');
         Route::delete('/delete/{task_id}', [TaskController::class, 'delete'])->whereNumber('task_id')->name('delete');
-
-      Route::get('/csv/download', [TaskController::class, 'csvDownload']);
+        Route::post('/complete/{task_id}', [TaskController::class, 'complete'])->whereNumber('task_id')->name('complete');
+        Route::get('/csv/download', [TaskController::class, 'csvDownload']);
     });
-
+    // 完了タスクリスト
+    Route::get('/completed_tasks/list', [CompletedTaskController::class, 'list']);
     //
     Route::get('/logout', [AuthController::class, 'logout']);
 });
-
 
 
 // テスト用
