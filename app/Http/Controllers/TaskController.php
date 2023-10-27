@@ -226,8 +226,8 @@ var_dump($sql);
             $request->session()->flash('front.task_completed_failure', true);
         }
 
-        // 一覧に遷移する
-        return redirect('/task/list');
+        //完了 一覧に遷移する
+        return redirect('/completed_tasks/list');
     }
 
     /**

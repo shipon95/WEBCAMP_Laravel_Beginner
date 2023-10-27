@@ -5,30 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CompletedTask extends Model
+// getPriorityString() は同じものを使うので \App\Models\Task を継承する。本来は、Traitにするとベター(書ける人は書いてみましょう)
+class CompletedTask extends \App\Models\Task
 {
     use HasFactory;
 
     /**
      * 複数代入不可能な属性
      */
-    protected $guarded = ['id'];
-
-    /**
-     * 「重要度」用の定数
-     */
-    const PRIORITY_VALUE = [
-        1 => '低い',
-        2 => '普通',
-        3 => '高い',
-    ];
-
-    /**
-     * 重要度の文字列を取得する
-     */
-    public function getPriorityString()
-    {
-        return $this::PRIORITY_VALUE[ $this->priority ] ?? '';
-    }
+    protected $guarded = [];
 
 }

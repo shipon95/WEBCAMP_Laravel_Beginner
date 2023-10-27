@@ -21,7 +21,7 @@ class FrontAuthUser extends Seeder
             'name' => 'テストユーザ',
             'email' => 'hoge@example.com',
             'email_verified_at' => date('Y-m-d H:i:s'),
-            'password'=> Hash::make($datum['password']),
+            'password' => Hash::make('pass')
         ]);
     }
 }
